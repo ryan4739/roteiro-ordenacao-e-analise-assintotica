@@ -1,5 +1,6 @@
-public class MergeSort {
+public class MergeSort implements Sorting {
 
+	@Override
 	public void sort(int[] v) {
 		mergeSort(v, 0, v.length - 1);
 	}
