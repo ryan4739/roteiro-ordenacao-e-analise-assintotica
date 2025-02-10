@@ -39,4 +39,9 @@ public class MergeSort implements Sorting {
 			v[k++] = helper[j++];
 	}
 
+	@Override
+	public String getName() {
+		return "Merge";
+	}
+
 }

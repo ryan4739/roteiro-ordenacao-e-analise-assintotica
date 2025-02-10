@@ -18,4 +18,9 @@ public class InsertionSort implements Sorting {
 		v[j] = aux;
 	}
 
+	@Override
+	public String getName() {
+		return "Insertion";
+	}
+
 }

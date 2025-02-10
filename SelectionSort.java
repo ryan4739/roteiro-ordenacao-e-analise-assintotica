@@ -17,5 +17,10 @@ public class SelectionSort implements Sorting {
 		v[i] = v[j];
 		v[j] = aux;
 	}
+	
+	@Override
+	public String getName() {
+		return "Selection";
+	}
 
 }
