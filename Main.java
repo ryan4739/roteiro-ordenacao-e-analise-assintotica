@@ -18,18 +18,22 @@ public class Main {
 		try {
 			FileWriter writer = new FileWriter("sort.data");
 			writer.write("alg time sample\n");
-			for (int i = 1000; i <= 20000; i += 1000) {
+			for (int i = 1000; i <= 10000; i += 1000) {
 				int[] values = new int[i];	
 				for (int j = 0; j < values.length; j++) {
-					values[j] = rand.nextInt(values.length);
+					values[j] = rand.nextInt(1000);
 				}
 				for (int k = 0; k < 4; k++){
-					long lStartTime = System.currentTimeMillis();
-					executer.executeSortingAlgorithm(strategys[k], values);
-
-					long lEndTime = System.currentTimeMillis();
-					long outputTime = lEndTime - lStartTime;
-					writer.write(strategys[k].getName() + " " + outputTime + " " + i + "\n");
+					long[] outputTimes = new long[30];
+					for (int l = 0; l < 30; l++) {
+						long lStartTime = System.nanoTime();
+						executer.executeSortingAlgorithm(strategys[k], values);
+						long lEndTime = System.nanoTime();
+						long outputTime = lEndTime - lStartTime;
+						outputTimes[l] = outputTime;
+						Arrays.sort(outputTimes);
+					}
+					writer.write(strategys[k].getName() + " " + outputTimes[15]/1000000 + " " + i + "\n");
 				}
 			}
 			writer.close();

@@ -6,6 +6,7 @@ public class MergeSort implements Sorting {
 	}
 
 	public void mergeSort(int[] v, int left, int right) {
+		
 		if (left >= right)
 			return;
 		
@@ -15,28 +16,33 @@ public class MergeSort implements Sorting {
 		mergeSort(v, middle + 1, right);
 
 		merge(v, left, middle, right);
+
 	}
 
 	public void merge(int[] v, int left, int middle, int right) {
-		int[] helper = new int[v.length];
-		for (int i = 0; i < v.length; i++)
-			helper[i] = v[i];
+		
+		int size = right - left + 1;
 
-		int i = left;
-		int j = middle + 1;
+		int[] helper = new int[size];
+		for (int i = 0; i < size; i++)
+			helper[i] = v[left + i];
+
+		int i = 0;
+		int j = middle - left + 1;
 		int k = left;
 
-		while (i <= middle && j <= right) {
+		while (i <= middle - left && j <= right - left) {
 			if (helper[i] <= helper[j])
 				v[k++] = helper[i++];
 			else
 				v[k++] = helper[j++];
 		}
 
-		while (i <= middle)
+		while (i <= middle - left)
 			v[k++] = helper[i++];
-		while (j <= right)
+		while (j <= right - left)
 			v[k++] = helper[j++];
+
 	}
 
 	@Override
